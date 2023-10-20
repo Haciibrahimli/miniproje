@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics</title>
+</head>
+<body>
+    {% for i in p %}
+    <h3><a href="{% url 'detail' i.id %}">{{i.name}} </a></h3>
+    <h3>{{i.name}}</h3>
+    <h3>{{i.price}}</h3>
+    <h3>{{i.herz}}</h3>
+    <h3>{{i.marka}}</h3>
+    <h3>{{i.color}}</h3>
+     {% endfor %}
+     {% if p.has_previous %}
+     <a href="?page={{ p.number|add:'-1' }}">Evvelki  </a>
+     {% endif %}
+{% if p.number > 1 %}
+<a href="?page={{ p.number|add:'-1' }}">{{p.number|add:"-1"}} </a>
+{% endif %}
+ 
+<a href="?page={{ p.number}}"> {{p.number}} </a>
+{% if p.has_next %}
+<a href="?page={{ p.number|add:'1' }}">{{ p.number|add:"1" }}  </a>
+<a href="?page={{ p.number|add:'1' }}">Sonraki  </a>
+{% endif %} 
+</body>
+</html>
